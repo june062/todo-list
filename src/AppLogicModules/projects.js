@@ -14,7 +14,8 @@ export class Project{
         this.arrayOfTasks.push(taskName);    
     }
 
-    deleteTask(){
-
+    deleteTask(task){
+      let taskIndex = this.arrayOfTasks.findIndex(element=>element.taskIdentifier === task);
+      this.arrayOfTasks.splice(taskIndex,1)
     }
 }
