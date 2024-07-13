@@ -9,8 +9,8 @@ export class Project{
         this.arrayOfTasks = [];
         this.projectIdentifier = Project.projectIdentifier++;
     }
-    createAndAddTask(taskName,description){
-        taskName = new Task(taskName,description);
+    createAndAddTask(taskName,description,dueDate,urgency, completed){
+        taskName = new Task(taskName,description,dueDate,urgency, completed);
         this.arrayOfTasks.push(taskName);    
     }
 
