@@ -1,7 +1,7 @@
 import "./style.css"
 import {Project} from "./AppLogicModules/projects.js"
 import { formatDistance, subDays, format } from "date-fns";
-import {storeTasksInTimeObject, thisMonthsSchedule} from "./AppLogicModules/schedule.js"
+import {storeTasksInTimeObject,todaysSchedule, thisWeeksSchedule, thisMonthsSchedule} from "./AppLogicModules/schedule.js"
 export {arrayOfProjects}
 
 
@@ -28,7 +28,7 @@ project1.createAndAddTask("task2", "That other thing that I have to do", "07/15/
 
 let project2 = new Project("Project 2");
  project2.createAndAddTask("Thing for project 2",  "Damn I have to do this thing", "09/01/2024");
-project2.createAndAddTask("Other thing for project 2",  "Damn I also have to do this thing", "08/20/2024");
+project2.createAndAddTask("Other thing for project 2",  "Damn I also have to do this thing", "08/15/2024");
 
  
 
@@ -37,15 +37,10 @@ projectRemovalAndAddition.addProjectToArray(project2)
 
 
 
-
-
-console.log(arrayOfProjects)
-
-
-
-
 storeTasksInTimeObject();
-
+console.log(todaysSchedule);
+console.log(thisWeeksSchedule)
+console.log(thisMonthsSchedule)
 
 
 
