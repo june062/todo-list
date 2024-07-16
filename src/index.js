@@ -23,12 +23,12 @@ export {arrayOfProjects}
 
 let project1 = new Project("Project 1");
 
-project1.createAndAddTask("task1", "thing 1", "07/23/2024");
-project1.createAndAddTask("task2", "That other thing that I have to do", "07/15/2024")
+project1.createAndAddTask("task1", "thing 1", "07/23/2024", "eh", "false");
+project1.createAndAddTask("task2", "That other thing that I have to do", "07/15/2024", "eh", "true")
 
 let project2 = new Project("Project 2");
- project2.createAndAddTask("Thing for project 2",  "Damn I have to do this thing", "09/01/2024");
-project2.createAndAddTask("Other thing for project 2",  "Damn I also have to do this thing", "08/15/2024");
+ project2.createAndAddTask("Thing for project 2",  "Damn I have to do this thing", "09/01/2024", "eh", "false");
+project2.createAndAddTask("Other thing for project 2",  "Damn I also have to do this thing", "08/15/2024", "eh", "false");
 
  
 
@@ -36,10 +36,13 @@ projectRemovalAndAddition.addProjectToArray(project1)
 projectRemovalAndAddition.addProjectToArray(project2)
 
 
+console.log(todaysSchedule)
+storeTasksInTimeObject()
 
-storeTasksInTimeObject();
-console.log(todaysSchedule);
 console.log(thisWeeksSchedule)
+
+
+
 console.log(thisMonthsSchedule)
 
 
