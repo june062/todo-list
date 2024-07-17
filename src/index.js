@@ -1,8 +1,7 @@
 import "./style.css"
 import {Project} from "./AppLogicModules/projects.js"
-import { formatDistance, subDays, format } from "date-fns";
 import {storeTasksInTimeObject,todaysSchedule, thisWeeksSchedule, thisMonthsSchedule} from "./AppLogicModules/schedule.js"
-export {arrayOfProjects} 
+export {arrayOfProjects, sendToLocalStorage} 
 
 
  let arrayOfProjects = [];
@@ -11,47 +10,34 @@ export {arrayOfProjects}
 
     function addProjectToArray(project){
         arrayOfProjects.push(project);
+        sendToLocalStorage()
     }
     function removeProjectFromArray(projectIdentifier){
         let projectIndex = arrayOfProjects.findIndex(element=>element.projectIdentifier === projectIdentifier);
-        arrayOfProjects.splice(projectIndex,1)
+        arrayOfProjects.splice(projectIndex,1);
+        sendToLocalStorage();
 
     }
     return {addProjectToArray, removeProjectFromArray}
 
  })();
+ /* let newProject = new Project("New Project");
+ projectRemovalAndAddition.addProjectToArray(newProject) */
 
-/* let project1 = new Project("Project 1");
-
-project1.createAndAddTask("task1", "thing 1", "07/23/2024", "eh", "false");
-project1.createAndAddTask("task2", "That other thing that I have to do", "07/15/2024", "eh", "true")
-
-let project2 = new Project("Project 2");
- project2.createAndAddTask("Thing for project 2",  "Damn I have to do this thing", "09/01/2024", "eh", "false");
-project2.createAndAddTask("Other thing for project 2",  "Damn I also have to do this thing", "08/15/2024", "eh", "false");
-
- 
-
-projectRemovalAndAddition.addProjectToArray(project1)
-projectRemovalAndAddition.addProjectToArray(project2)
-
-
-console.log(todaysSchedule)*/
-
- 
-/* console.log(thisWeeksSchedule)
-
-
-
-console.log(thisMonthsSchedule)
-  */
+ if (!JSON.parse(localStorage.getItem("arrayOfProjects"))){
+    createDefaultProject();
+    sendToLocalStorage();
+}
+else {
+    retrieveFromLocalStorage();
+}
 
 
 function sendToLocalStorage(){
-localStorage.setItem("arrayOfProjects", JSON.stringify(arrayOfProjects));
-localStorage.setItem("todaysSchedule", JSON.stringify(todaysSchedule))
-localStorage.setItem("thisWeeksSchedule", JSON.stringify(thisWeeksSchedule))
-localStorage.setItem("thisMonthsSchedule", JSON.stringify(thisMonthsSchedule))
+    localStorage.setItem("arrayOfProjects", JSON.stringify(arrayOfProjects));
+    localStorage.setItem("todaysSchedule", JSON.stringify(todaysSchedule))
+    localStorage.setItem("thisWeeksSchedule", JSON.stringify(thisWeeksSchedule))
+    localStorage.setItem("thisMonthsSchedule", JSON.stringify(thisMonthsSchedule))
 }
 
 function retrieveFromLocalStorage(){
@@ -61,8 +47,20 @@ function retrieveFromLocalStorage(){
     Object.assign(thisMonthsSchedule,JSON.parse(localStorage.getItem("thisMonthsSchedule"))); 
 }
 
-retrieveFromLocalStorage()
-storeTasksInTimeObject()
+function createDefaultProject(){
+    let defaultProject = new Project("Default Project");
+    projectRemovalAndAddition.addProjectToArray(defaultProject);
+    sendToLocalStorage();
+}
+
+storeTasksInTimeObject();
+
+console.log(arrayOfProjects)
+console.log(thisMonthsSchedule)
+
+
+
+
 
 
 

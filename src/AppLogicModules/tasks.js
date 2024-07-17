@@ -1,6 +1,7 @@
 import {format} from "date-fns";
+export {Task};
 
-export class Task{
+class Task{
     static taskIdentifier = 0;
     constructor(taskName, description,dueDate,urgency, completed){
         this.taskName = taskName;

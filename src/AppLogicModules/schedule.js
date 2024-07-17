@@ -1,5 +1,5 @@
 import { formatDistanceStrict, format, formatDistanceToNowStrict } from "date-fns";
-import {arrayOfProjects} from "../index.js"
+import {arrayOfProjects, sendToLocalStorage} from "../index.js"
 export {storeTasksInTimeObject, todaysSchedule, thisWeeksSchedule, thisMonthsSchedule}
 
 let removeTaskFromSchedule = function(obj)
@@ -7,6 +7,7 @@ let removeTaskFromSchedule = function(obj)
        return {removeTask: (nameOfTask) => {
             obj[nameOfTask].completed = "true";
             delete obj[nameOfTask];
+            sendToLocalStorage();
             }
         }
 
@@ -25,8 +26,12 @@ let thisMonthsSchedule = timeFactoryFunction();
 
 function storeTasksInTimeObject(){
     for (let i = 0; i < 2; i++){
+        let arrayToLoop;
         
-        let arrayToLoop = arrayOfProjects[i].arrayOfTasks;
+        if (arrayOfProjects[i].arrayOfTasks.length > 0){
+            arrayToLoop = arrayOfProjects[i].arrayOfTasks;
+        }
+       
         
         for(let j = 0; j < 2; j++){
             let daysPhrase = formatDistanceToNowStrict(arrayToLoop[j].dueDate, {unit: "day"});
@@ -50,7 +55,10 @@ function storeTasksInTimeObject(){
     }
   
 
-    }}
+    }
+
+    sendToLocalStorage()
+}
 
 
 
