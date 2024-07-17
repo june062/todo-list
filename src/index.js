@@ -2,7 +2,7 @@ import "./style.css"
 import {Project} from "./AppLogicModules/projects.js"
 import { formatDistance, subDays, format } from "date-fns";
 import {storeTasksInTimeObject,todaysSchedule, thisWeeksSchedule, thisMonthsSchedule} from "./AppLogicModules/schedule.js"
-export {arrayOfProjects}
+export {arrayOfProjects} 
 
 
  let arrayOfProjects = [];
@@ -21,7 +21,7 @@ export {arrayOfProjects}
 
  })();
 
-let project1 = new Project("Project 1");
+/* let project1 = new Project("Project 1");
 
 project1.createAndAddTask("task1", "thing 1", "07/23/2024", "eh", "false");
 project1.createAndAddTask("task2", "That other thing that I have to do", "07/15/2024", "eh", "true")
@@ -38,14 +38,34 @@ projectRemovalAndAddition.addProjectToArray(project2)
 
 console.log(todaysSchedule)
 storeTasksInTimeObject()
-
+ */
 console.log(thisWeeksSchedule)
 
 
 
 console.log(thisMonthsSchedule)
+ 
+function sendToLocalStorage(){
+localStorage.setItem("arrayOfProjects", JSON.stringify(arrayOfProjects));
+localStorage.setItem("todaysSchedule", JSON.stringify(todaysSchedule))
+localStorage.setItem("thisWeeksSchedule", JSON.stringify(thisWeeksSchedule))
+localStorage.setItem("thisMonthsSchedule", JSON.stringify(thisMonthsSchedule))
+}
+function retrieveFromLocalStorage(){
+   
 
 
+    arrayOfProjects = JSON.parse(localStorage.getItem("arrayOfProjects"));
+
+ /*    todaysSchedule = JSON.parse(localStorage.getItem("todaysSchedule"));
+ */
+   /*  thisWeeksSchedule = JSON.parse(localStorage.getItem("thisWeeksSchedule"));
+
+    thisMonthsSchedule = JSON.parse(localStorage.getItem("thisMonthsSchedule")); */
+    
+}
+retrieveFromLocalStorage()
+console.log(arrayOfProjects)
 
 
 
