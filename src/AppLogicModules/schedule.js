@@ -7,7 +7,8 @@ let removeTaskFromSchedule = function(obj)
        return {removeTask: (nameOfTask) => {
             obj[nameOfTask].completed = "true";
             delete obj[nameOfTask];
-        }}
+            }
+        }
 
 }
 let timeFactoryFunction = function(){
@@ -21,11 +22,12 @@ let thisMonthsSchedule = timeFactoryFunction();
 
 
 
+
 function storeTasksInTimeObject(){
     for (let i = 0; i < 2; i++){
         
         let arrayToLoop = arrayOfProjects[i].arrayOfTasks;
-        console.log(arrayToLoop)
+        
         for(let j = 0; j < 2; j++){
             let daysPhrase = formatDistanceToNowStrict(arrayToLoop[j].dueDate, {unit: "day"});
             let days = daysPhrase.replace(/(^\d+)(.+$)/i,'$1'); 

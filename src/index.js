@@ -36,36 +36,34 @@ projectRemovalAndAddition.addProjectToArray(project1)
 projectRemovalAndAddition.addProjectToArray(project2)
 
 
-console.log(todaysSchedule)
-storeTasksInTimeObject()
- */
-console.log(thisWeeksSchedule)
+console.log(todaysSchedule)*/
+
+ 
+/* console.log(thisWeeksSchedule)
 
 
 
 console.log(thisMonthsSchedule)
- 
+  */
+
+
 function sendToLocalStorage(){
 localStorage.setItem("arrayOfProjects", JSON.stringify(arrayOfProjects));
 localStorage.setItem("todaysSchedule", JSON.stringify(todaysSchedule))
 localStorage.setItem("thisWeeksSchedule", JSON.stringify(thisWeeksSchedule))
 localStorage.setItem("thisMonthsSchedule", JSON.stringify(thisMonthsSchedule))
 }
+
 function retrieveFromLocalStorage(){
-   
-
-
     arrayOfProjects = JSON.parse(localStorage.getItem("arrayOfProjects"));
-
- /*    todaysSchedule = JSON.parse(localStorage.getItem("todaysSchedule"));
- */
-   /*  thisWeeksSchedule = JSON.parse(localStorage.getItem("thisWeeksSchedule"));
-
-    thisMonthsSchedule = JSON.parse(localStorage.getItem("thisMonthsSchedule")); */
-    
+    Object.assign(todaysSchedule, JSON.parse(localStorage.getItem("todaysSchedule")));
+    Object.assign(thisWeeksSchedule,JSON.parse(localStorage.getItem("thisWeeksSchedule")));
+    Object.assign(thisMonthsSchedule,JSON.parse(localStorage.getItem("thisMonthsSchedule"))); 
 }
+
 retrieveFromLocalStorage()
-console.log(arrayOfProjects)
+storeTasksInTimeObject()
+
 
 
 
