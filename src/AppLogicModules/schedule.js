@@ -25,15 +25,18 @@ let thisMonthsSchedule = timeFactoryFunction();
 
 
 function storeTasksInTimeObject(){
-    for (let i = 0; i < 2; i++){
+    for (let i = 0; i < arrayOfProjects.length; i++){
         let arrayToLoop;
         
-        if (arrayOfProjects[i].arrayOfTasks.length > 0){
+        if (arrayOfProjects[i].arrayOfTasks.length == 0){
+            continue;
+        }
+        else{
             arrayToLoop = arrayOfProjects[i].arrayOfTasks;
         }
        
         
-        for(let j = 0; j < 2; j++){
+        for(let j = 0; j < arrayToLoop.length; j++){
             let daysPhrase = formatDistanceToNowStrict(arrayToLoop[j].dueDate, {unit: "day"});
             let days = daysPhrase.replace(/(^\d+)(.+$)/i,'$1'); 
             const thisWeekTrueOrFalse = days <= 7 && days != 1;
@@ -57,7 +60,6 @@ function storeTasksInTimeObject(){
 
     }
 
-    sendToLocalStorage()
 }
 
 

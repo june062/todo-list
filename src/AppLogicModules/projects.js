@@ -13,13 +13,13 @@ export class Project{
     createAndAddTask(taskName,description,dueDate,urgency, completed){
         taskName = new Task(taskName,description,dueDate,urgency, completed);
         this.arrayOfTasks.push(taskName);   
-        sendToLocalStorage(); 
+        
     }
 
     deleteTask(task){
       let taskIndex = this.arrayOfTasks.findIndex(element=>element.taskIdentifier === task);
       this.arrayOfTasks.splice(taskIndex,1);
-      sendToLocalStorage();
+
     }
 }
 
