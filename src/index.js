@@ -6,36 +6,20 @@ export {arrayOfProjects, sendToLocalStorage}
 
  let arrayOfProjects = [];
 
-
- window.addEventListener("load", function(){
-    if (!JSON.parse(localStorage.getItem("arrayOfProjects"))){
-        createDefaultProject();
-        sendToLocalStorage();
-    }
-    else {
-        retrieveFromLocalStorage();
-    }
-
- });
  console.log(arrayOfProjects)
  console.log(thisMonthsSchedule)
 
- /* if (!JSON.parse(localStorage.getItem("arrayOfProjects"))){
-    createDefaultProject();
-    sendToLocalStorage();
-}
-else {
-    retrieveFromLocalStorage();
-}
-  */
- let projectRemovalAndAddition = (function (){
+  
+ let defaultProject = new Project("Default Project");
+
+ const projectRemovalAndAddition = (function (){
 
     function addProjectToArray(project){
         arrayOfProjects.push(project);
         sendToLocalStorage()
     }
-    function removeProjectFromArray(projectIdentifier){
-        let projectIndex = arrayOfProjects.findIndex(element=>element.projectIdentifier === projectIdentifier);
+    function removeProjectFromArray(projectIdentifier, projectName){
+        let projectIndex = arrayOfProjects.findIndex(element=>element.projectIdentifier === projectIdentifier && element.projectName === projectName);
         arrayOfProjects.splice(projectIndex,1);
         sendToLocalStorage();
 
@@ -43,15 +27,14 @@ else {
     return {addProjectToArray, removeProjectFromArray}
 
  })();
-  /* let secondtestProject = new Project("Test Project");
- secondtestProject.createAndAddTask("new project task", "nothing", "07/25/2024", "eh", "false")
- projectRemovalAndAddition.addProjectToArray(secondtestProject)   */
 
- /*  let secondProject = new Project("second Project");
- secondProject.createAndAddTask("second task", "nothing", "07/18/2024", "eh", "false")
- projectRemovalAndAddition.addProjectToArray(secondProject) 
- 
-  */
+ if (!JSON.parse(localStorage.getItem("arrayOfProjects"))){
+    createDefaultProject();
+    sendToLocalStorage();
+}
+else {
+    retrieveFromLocalStorage();
+}
 
 
 function sendToLocalStorage(){
@@ -69,16 +52,15 @@ function retrieveFromLocalStorage(){
 }
 
 function createDefaultProject(){
-    let defaultProject = new Project("Default Project");
     projectRemovalAndAddition.addProjectToArray(defaultProject);
     sendToLocalStorage();
 }
+
+defaultProject.createAndAddTask("that thing", "nothing iportnat", "08/01/2024", "eh", "false")
+
 console.log(arrayOfProjects);
+console.log(thisMonthsSchedule)
 
-
-/*  storeTasksInTimeObject() 
-
- sendToLocalStorage()  */
 
 
 

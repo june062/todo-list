@@ -12,6 +12,8 @@ module.exports = {
   devServer: {
    static: "./dist",
     watchFiles: ['src/*.html',], 
+    port: 8080,
+    open: true,
   },
   output: {
     filename: '[name].js',
