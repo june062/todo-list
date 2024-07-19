@@ -1,17 +1,12 @@
 import "./style.css"
 import {Project} from "./AppLogicModules/projects.js"
 import {storeTasksInTimeObject,todaysSchedule, thisWeeksSchedule, thisMonthsSchedule} from "./AppLogicModules/schedule.js"
-export {arrayOfProjects, sendToLocalStorage} 
+export {arrayOfProjects, sendToLocalStorage, retrieveFromLocalStorage} 
 
 
  let arrayOfProjects = [];
 
- console.log(arrayOfProjects)
- console.log(thisMonthsSchedule)
-
-  
- let defaultProject = new Project("Default Project");
-
+ 
  const projectRemovalAndAddition = (function (){
 
     function addProjectToArray(project){
@@ -52,14 +47,10 @@ function retrieveFromLocalStorage(){
 }
 
 function createDefaultProject(){
+    let defaultProject = new Project("Default Project");
     projectRemovalAndAddition.addProjectToArray(defaultProject);
     sendToLocalStorage();
 }
-
-defaultProject.createAndAddTask("that thing", "nothing iportnat", "08/01/2024", "eh", "false")
-
-console.log(arrayOfProjects);
-console.log(thisMonthsSchedule)
 
 
 

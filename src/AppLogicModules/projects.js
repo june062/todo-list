@@ -1,5 +1,5 @@
 import {Task} from './tasks.js'
-import { sendToLocalStorage } from '../index.js';
+import { sendToLocalStorage, retrieveFromLocalStorage } from '../index.js';
 import { storeTasksInTimeObject } from './schedule.js';
 
 export class Project{
@@ -15,9 +15,11 @@ export class Project{
         taskName = new Task(taskName,description,dueDate,urgency, completed);
         console.log(this)
         console.log(taskName);
-        this.arrayOfTasks.push(taskName);   
+        this.arrayOfTasks.push(taskName);  
+        console.log(this.arrayOfTasks) 
         storeTasksInTimeObject()
         sendToLocalStorage()
+      
         
     }
 
