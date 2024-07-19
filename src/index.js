@@ -6,8 +6,6 @@ export {arrayOfProjects, sendToLocalStorage}
 
  let arrayOfProjects = [];
 
- console.log(arrayOfProjects)
- console.log(thisMonthsSchedule)
 
  window.addEventListener("load", function(){
     if (!JSON.parse(localStorage.getItem("arrayOfProjects"))){
@@ -18,7 +16,10 @@ export {arrayOfProjects, sendToLocalStorage}
         retrieveFromLocalStorage();
     }
 
- }) 
+ });
+ console.log(arrayOfProjects)
+ console.log(thisMonthsSchedule)
+
  /* if (!JSON.parse(localStorage.getItem("arrayOfProjects"))){
     createDefaultProject();
     sendToLocalStorage();
@@ -42,9 +43,9 @@ else {
     return {addProjectToArray, removeProjectFromArray}
 
  })();
-  let secondtestProject = new Project("Test Project");
+  /* let secondtestProject = new Project("Test Project");
  secondtestProject.createAndAddTask("new project task", "nothing", "07/25/2024", "eh", "false")
- projectRemovalAndAddition.addProjectToArray(secondtestProject)  
+ projectRemovalAndAddition.addProjectToArray(secondtestProject)   */
 
  /*  let secondProject = new Project("second Project");
  secondProject.createAndAddTask("second task", "nothing", "07/18/2024", "eh", "false")
@@ -72,14 +73,13 @@ function createDefaultProject(){
     projectRemovalAndAddition.addProjectToArray(defaultProject);
     sendToLocalStorage();
 }
-
+console.log(arrayOfProjects);
 
 
 /*  storeTasksInTimeObject() 
 
  sendToLocalStorage()  */
-console.log(arrayOfProjects)
-console.log(thisMonthsSchedule)
+
 
 
 

@@ -3,15 +3,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
-  devtool: 'inline-source-map',
-  devServer: {
-    static: './dist',
-  },
+  entry: [
+    "webpack-dev-server/client?http://127.0.0.0:8080",
+    "webpack/hot/only-dev-server",
+    './src/index.js'],
+
   devtool: "inline-source-map",
   devServer: {
-    static: "./dist",
-    watchFiles: ['src/*.html',]
+   static: "./dist",
+    watchFiles: ['src/*.html',], 
   },
   output: {
     filename: '[name].js',
@@ -35,6 +35,7 @@ module.exports = {
       title: "Todo",
       template: "./src/index.html",
       inject: 'head',
+      scriptLoading: "defer"
     })
   ]
 };
