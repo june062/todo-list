@@ -1,21 +1,27 @@
-export function generatePermanentDOM(){
+export {generatePermanentDOM, todayButton,thisWeekButton,thisMonthButton,newProjectButton,titleHeader}
+
+
+
+let todayButton = document.createElement("button"); 
+let thisWeekButton = document.createElement("button");
+let thisMonthButton = document.createElement("button");
+let newProjectButton = document.createElement("button");
+let titleHeader = document.createElement("h1")
+
+function generatePermanentDOM(){
     let body = document.querySelector("body");
 
     let sidebarDiv = document.createElement("div");
         sidebarDiv.classList.add("sidebar");
-        let todayButton = document.createElement("button"); 
             todayButton.classList.add("today")
             todayButton.textContent = "Today";
 
-        let thisWeekButton = document.createElement("button");
             thisWeekButton.classList.add("this-week");
             thisWeekButton.textContent = "This Week";
 
-        let thisMonthButton = document.createElement("button");
             thisMonthButton.classList.add("this-month");
             thisMonthButton.textContent = "This Month";
 
-        let newProjectButton = document.createElement("button");
             newProjectButton.classList.add("new-project");
             newProjectButton.textContent = "New Project";
 
@@ -24,11 +30,13 @@ export function generatePermanentDOM(){
 
     let titleContainer = document.createElement("div");
         titleContainer.classList.add("title-container");
-        let titleHeader = document.createElement("h1")
             titleHeader.textContent= "Today"
 
     titleContainer.appendChild(titleHeader);
 
-    body.append(sidebarDiv,titleContainer)
+    let mainContainer = document.createElement("div");
+        mainContainer.classList.add("main-container");
+
+    body.append(sidebarDiv,titleContainer,mainContainer)
 
 }

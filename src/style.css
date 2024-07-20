@@ -51,3 +51,29 @@ body{
     grid-area: 1/2/2/3;
     background-color: #558B6E;
 }
+
+.main-container{
+    background-color: #96b3b0;
+}
+
+/* Project and project modal styles */
+
+dialog[open]{
+    height: 60%;
+    width: 30%;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0px;
+}
+dialog > main{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+}

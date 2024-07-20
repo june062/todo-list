@@ -1,12 +1,19 @@
 import "./style.css"
 import {Project} from "./AppLogicModules/projects.js"
 import {storeTasksInTimeObject,todaysSchedule, thisWeeksSchedule, thisMonthsSchedule} from "./AppLogicModules/schedule.js"
-import {generatePermanentDOM} from "./domlogic.js"
-export {arrayOfProjects, sendToLocalStorage, retrieveFromLocalStorage} 
+import {generatePermanentDOM, newProjectButton} from "./domlogic.js"
+import {projectsDOM} from "./DOMLogicModules/projectsDOM.js"
+export {arrayOfProjects, sendToLocalStorage, retrieveFromLocalStorage, projectRemovalAndAddition} 
 
 
  let arrayOfProjects = [];
+ let projectModal = document.querySelector("dialog.project-modal")
+
  generatePermanentDOM()
+
+newProjectButton.addEventListener("click",()=> {
+    projectModal.showModal()
+})
 
  
  const projectRemovalAndAddition = (function (){
@@ -53,6 +60,7 @@ function createDefaultProject(){
     projectRemovalAndAddition.addProjectToArray(defaultProject);
     sendToLocalStorage();
 }
+
 
 
 
