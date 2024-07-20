@@ -1,20 +1,32 @@
 import "./style.css"
 import {Project} from "./AppLogicModules/projects.js"
 import {storeTasksInTimeObject,todaysSchedule, thisWeeksSchedule, thisMonthsSchedule} from "./AppLogicModules/schedule.js"
-import {generatePermanentDOM, newProjectButton} from "./domlogic.js"
+import {generatePermanentDOM, newProjectButton, projectModal,newProjectSubmit, newProjectClose} from "./domlogic.js"
 import {projectsDOM} from "./DOMLogicModules/projectsDOM.js"
 export {arrayOfProjects, sendToLocalStorage, retrieveFromLocalStorage, projectRemovalAndAddition} 
 
 
  let arrayOfProjects = [];
- let projectModal = document.querySelector("dialog.project-modal")
+
 
  generatePermanentDOM()
+
+
+
+ /* New Project button functionality  */
 
 newProjectButton.addEventListener("click",()=> {
     projectModal.showModal()
 })
 
+newProjectSubmit.addEventListener("click", () => {
+    projectsDOM.createProject()
+})
+
+newProjectClose.addEventListener("click", ()=> {
+    projectModal.close()
+})
+/* ----------------- */
  
  const projectRemovalAndAddition = (function (){
 
@@ -38,6 +50,7 @@ newProjectButton.addEventListener("click",()=> {
 }
 else {
     retrieveFromLocalStorage();
+    projectsDOM.displayAllProjects();
 }
 
 
