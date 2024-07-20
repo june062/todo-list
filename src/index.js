@@ -1,10 +1,12 @@
 import "./style.css"
 import {Project} from "./AppLogicModules/projects.js"
 import {storeTasksInTimeObject,todaysSchedule, thisWeeksSchedule, thisMonthsSchedule} from "./AppLogicModules/schedule.js"
+import {generatePermanentDOM} from "./domlogic.js"
 export {arrayOfProjects, sendToLocalStorage, retrieveFromLocalStorage} 
 
 
  let arrayOfProjects = [];
+ generatePermanentDOM()
 
  
  const projectRemovalAndAddition = (function (){
