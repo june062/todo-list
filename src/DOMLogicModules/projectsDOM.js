@@ -1,6 +1,6 @@
 import {Project} from "../AppLogicModules/projects.js"
 import { projectRemovalAndAddition, arrayOfProjects } from "../index.js";
-import { sidebarDiv } from "../domlogic.js";
+import { sidebarDiv, newProjectsContainer } from "../domlogic.js";
 export {projectsDOM};
 
 let projectsDOM = (function (){
@@ -10,16 +10,18 @@ let projectsDOM = (function (){
         let projectTitleVal = projectTitle.value;
 
         let newProject = new Project(projectTitleVal);
-        console.log(Project.projectIdentifier)
+        newProject.createAndAddTask("thing", "anything", "07/30/2024", "eh", "false") 
+        
         projectRemovalAndAddition.addProjectToArray(newProject);
 
         function displayNewProject(){
             let projectButton = document.createElement('button');
                 projectButton.textContent = newProject.projectName;
 
-                projectButton.classList.add(`${newProject.projectName.replace(/\s+/g, '-').toLowerCase()}`)
+                projectButton.classList.add(`${newProject.projectName.replace(/\s+/g, '-').toLowerCase()}`);
+                projectButton.setAttribute("data-projectID", newProject.projectIdentifier)
     
-                sidebarDiv.appendChild(projectButton)
+                newProjectsContainer.appendChild(projectButton)
         }
 
         displayNewProject();
@@ -29,9 +31,10 @@ let projectsDOM = (function (){
         for (const proj of arrayOfProjects){
             let projectButton = document.createElement('button');
             projectButton.textContent = proj.projectName;
-            projectButton.classList.add(`${proj.projectName.replace(/\s+/g, '-').toLowerCase()}`)
+            projectButton.classList.add(`${proj.projectName.replace(/\s+/g, '-').toLowerCase()}`);
+            projectButton.setAttribute("data-projectID", proj.projectIdentifier)
 
-            sidebarDiv.appendChild(projectButton)
+            newProjectsContainer.appendChild(projectButton)
             }
         }   
     function displayAllTasks(){

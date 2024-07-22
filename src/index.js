@@ -12,22 +12,6 @@ export {arrayOfProjects, sendToLocalStorage, retrieveFromLocalStorage, projectRe
  generatePermanentDOM()
 
 
-
- /* New Project button functionality  */
-
-newProjectButton.addEventListener("click",()=> {
-    projectModal.showModal()
-})
-
-newProjectSubmit.addEventListener("click", () => {
-    projectsDOM.createProject()
-})
-
-newProjectClose.addEventListener("click", ()=> {
-    projectModal.close()
-})
-/* ----------------- */
- 
  const projectRemovalAndAddition = (function (){
 
     function addProjectToArray(project){
@@ -59,6 +43,7 @@ function sendToLocalStorage(){
     localStorage.setItem("todaysSchedule", JSON.stringify(todaysSchedule))
     localStorage.setItem("thisWeeksSchedule", JSON.stringify(thisWeeksSchedule))
     localStorage.setItem("thisMonthsSchedule", JSON.stringify(thisMonthsSchedule))
+    localStorage.setItem("projectIdentifier", Project.projectIdentifier)
 }
 
 function retrieveFromLocalStorage(){
@@ -66,6 +51,7 @@ function retrieveFromLocalStorage(){
     Object.assign(todaysSchedule, JSON.parse(localStorage.getItem("todaysSchedule")));
     Object.assign(thisWeeksSchedule,JSON.parse(localStorage.getItem("thisWeeksSchedule")));
     Object.assign(thisMonthsSchedule,JSON.parse(localStorage.getItem("thisMonthsSchedule"))); 
+    Project.projectIdentifier = localStorage.getItem("projectIdentifier");
 }
 
 function createDefaultProject(){
@@ -73,6 +59,10 @@ function createDefaultProject(){
     projectRemovalAndAddition.addProjectToArray(defaultProject);
     sendToLocalStorage();
 }
+
+
+
+console.log(arrayOfProjects)
 
 
 
