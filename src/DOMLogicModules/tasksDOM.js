@@ -7,6 +7,8 @@ import {arrayOfProjects} from "../index.js"
 
 function displayContentsOfProject(e){
     let selectedProject = arrayOfProjects.find((element) => element.projectIdentifier == e.target.dataset.projectid)
+
+
     function displayAllTasks(){
         
     }
