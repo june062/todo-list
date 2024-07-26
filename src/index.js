@@ -3,28 +3,43 @@ import {Project} from "./AppLogicModules/projects.js"
 import {storeTasksInTimeObject,todaysSchedule, thisWeeksSchedule, thisMonthsSchedule} from "./AppLogicModules/schedule.js"
 import {generatePermanentDOM, newProjectButton, projectModal,newProjectSubmit, newProjectClose} from "./domlogic.js"
 import {projectsDOM} from "./DOMLogicModules/projectsDOM.js"
-export {arrayOfProjects, sendToLocalStorage, retrieveFromLocalStorage, projectRemovalAndAddition} 
+export {sendToLocalStorage, retrieveFromLocalStorage, projectRemovalAndAddition} 
 
 
- let arrayOfProjects = [];
 
 
  generatePermanentDOM()
 
 
  const projectRemovalAndAddition = (function (){
+    let arrayOfProjects = [];
 
-    function addProjectToArray(project){
+
+
+    
+     let addProjectToArray = function(project){
         arrayOfProjects.push(project);
-        sendToLocalStorage()
     }
-    function removeProjectFromArray(projectIdentifier, projectName){
-        let projectIndex = arrayOfProjects.findIndex(element=>element.projectIdentifier === projectIdentifier && element.projectName === projectName);
+    
+    let removeProjectFromArray =  function(){
+        findProject();
         arrayOfProjects.splice(projectIndex,1);
         sendToLocalStorage();
-
     }
-    return {addProjectToArray, removeProjectFromArray}
+    let findProject = function(projectIdentifier, projectName){
+        let projectIndex = arrayOfProjects.findIndex(element=>element.projectIdentifier === projectIdentifier && element.projectName === projectName);
+        return projectIndex;
+    }
+
+
+ 
+
+    return {
+        get projects(){
+            return arrayOfProjects;
+        },
+        addProjectToArray, 
+        removeProjectFromArray}
 
  })();
 

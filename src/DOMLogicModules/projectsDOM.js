@@ -1,5 +1,5 @@
 import {Project} from "../AppLogicModules/projects.js"
-import { projectRemovalAndAddition, arrayOfProjects } from "../index.js";
+import { projectRemovalAndAddition } from "../index.js";
 import { sidebarDiv, newProjectsContainer } from "../domlogic.js";
 export {projectsDOM};
 
@@ -28,7 +28,7 @@ let projectsDOM = (function (){
 
     }
     function displayAllProjects(){
-        for (const proj of arrayOfProjects){
+        for (const proj of projectRemovalAndAddition.projects()){
             let projectButton = document.createElement('button');
             projectButton.textContent = proj.projectName;
             projectButton.classList.add(`${proj.projectName.replace(/\s+/g, '-').toLowerCase()}`);

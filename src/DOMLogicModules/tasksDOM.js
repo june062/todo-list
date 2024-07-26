@@ -1,12 +1,12 @@
 export {displayContentsOfProject}
 import {taskContainer} from "../domlogic.js"
-import {arrayOfProjects} from "../index.js"
+import {projectRemovalAndAddition} from "../index.js"
 
 
 
 
 function displayContentsOfProject(e){
-    let selectedProject = arrayOfProjects.find((element) => element.projectIdentifier == e.target.dataset.projectid)
+    let selectedProject = projectRemovalAndAddition.projects().find((element) => element.projectIdentifier == e.target.dataset.projectid)
 
 
     function displayAllTasks(){

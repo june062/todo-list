@@ -24,7 +24,13 @@ let thisMonthsSchedule = timeFactoryFunction();
 
 
 
-function storeTasksInTimeObject(){
+let storeTasksInTimeObject = (function (){
+todaysSchedule;
+thisWeeksSchedule;
+thisMonthsSchedule;
+
+
+let storeTasks = function(arrayOfProjects){
     for (let i = 0; i < arrayOfProjects.length; i++){
         let arrayToLoop;
         
@@ -59,8 +65,12 @@ function storeTasksInTimeObject(){
   
 
     }
-
 }
+return{storeTasks}
+
+
+
+})()
 
 
 
