@@ -54,7 +54,8 @@ let Subscriber = function(){
         obj.createAndAddTask(taskName,description,dueDate,urgency, completed);
         schedule();
         storage();
-    
+    }
+    let editTask = function(){
 
     }
     let removeTask = function(task){
@@ -64,7 +65,7 @@ let Subscriber = function(){
 
     }
 
-    return {addObserver,removeObserver,schedule,storage, addProjectToArray,removeProjectFromArray, createAndAddTask,removeTask}
+    return {addObserver,removeObserver,schedule,storage, addProjectToArray,removeProjectFromArray, createAndAddTask,removeTask, editTask}
 }
 
 let subscriber = new Subscriber()

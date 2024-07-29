@@ -1,6 +1,4 @@
 import "./style.css"
-import {Project} from "./AppLogicModules/projects.js"
-import {storeTasksInTimeObject,todaysSchedule, thisWeeksSchedule, thisMonthsSchedule} from "./AppLogicModules/schedule.js"
 import {generatePermanentDOM, newProjectButton, projectModal,newProjectSubmit, newProjectClose} from "./domlogic.js"
 import {projectsDOM} from "./DOMLogicModules/projectsDOM.js"
 export {projectRemovalAndAddition} 
@@ -8,7 +6,7 @@ export {projectRemovalAndAddition}
 
 
 
- generatePermanentDOM()
+
 
 
  const projectRemovalAndAddition = (function (){
@@ -19,20 +17,18 @@ export {projectRemovalAndAddition}
     return {
         get projects(){
             return arrayOfProjects;
-        }}
+        },
+        set setProjects(obj){
+            arrayOfProjects = obj;
+
+        }
+    
+    }
+    
 
  })();
+ generatePermanentDOM()
 
-/*  if (!JSON.parse(localStorage.getItem("arrayOfProjects"))){
-    createDefaultProject();
-    sendToLocalStorage();
-}
-
-else {
-    retrieveFromLocalStorage();
-    projectsDOM.displayAllProjects();
-}
- */
 
 
 

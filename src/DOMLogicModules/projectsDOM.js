@@ -29,7 +29,7 @@ let projectsDOM = (function (){
 
     }
     function displayAllProjects(){
-        for (const proj of projectRemovalAndAddition.projects()){
+        for (const proj of projectRemovalAndAddition.projects){
             let projectButton = document.createElement('button');
             projectButton.textContent = proj.projectName;
             projectButton.classList.add(`${proj.projectName.replace(/\s+/g, '-').toLowerCase()}`);

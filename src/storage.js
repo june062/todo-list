@@ -1,5 +1,6 @@
 import {Project} from "./AppLogicModules/projects.js"
 import { storeTasksInTimeObject } from "./AppLogicModules/schedule.js";
+import { projectRemovalAndAddition } from "./index.js";
 export {storageManager}
 
 let storageManager = (function(){
@@ -13,10 +14,10 @@ let storageManager = (function(){
     };
 
     function retrieveFromLocalStorage(){
-        arrayOfProjects = JSON.parse(localStorage.getItem("arrayOfProjects"));
-        Object.assign(todaysSchedule, JSON.parse(localStorage.getItem("todaysSchedule")));
-        Object.assign(thisWeeksSchedule,JSON.parse(localStorage.getItem("thisWeeksSchedule")));
-        Object.assign(thisMonthsSchedule,JSON.parse(localStorage.getItem("thisMonthsSchedule"))); 
+        projectRemovalAndAddition.setProjects = JSON.parse(localStorage.getItem("arrayOfProjects"));
+        Object.assign(storeTasksInTimeObject.todaysSchedule, JSON.parse(localStorage.getItem("todaysSchedule")));
+        Object.assign(storeTasksInTimeObject.thisWeeksSchedule,JSON.parse(localStorage.getItem("thisWeeksSchedule")));
+        Object.assign(storeTasksInTimeObject.thisMonthsSchedule,JSON.parse(localStorage.getItem("thisMonthsSchedule"))); 
         Project.projectIdentifier = localStorage.getItem("projectIdentifier");
     }
 
@@ -31,7 +32,7 @@ function createDefaultProject(){
 
 
 
-    return {sendToLocalStorage,retrieveFromLocalStorage}
+    return {sendToLocalStorage,retrieveFromLocalStorage, createDefaultProject}
 })()
 
 

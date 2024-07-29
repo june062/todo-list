@@ -21,8 +21,43 @@
         
                 <button class="close-form">Close</button>
             </footer>
+
   
 </dialog>
+
+<dialog class = "task-modal">
+            
+    <header><h1>Add a task</h1></header>
+
+
+    <main>
+        <div><label for="task-name">Task Name</label><input id= "task-name"type="text" required></div>
+        <div><label for="description">Description</label><input id= "description"type="text" required></div>
+        <div><label for="due-date">Due Date</label><input id= "due-date"type="text" required></div>
+
+        <div>
+            <label for="urgency">Urgency</label>
+            <select name="urgency" id="urgency">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+        </div>
+        <div><label for="completed">Completed</label><input id= "completed"type="checkbox" required></div>
+
+    </main>
+
+  
+        <footer>
+            <button class="task-submit-form">Add</button>
+    
+            <button class="task-close-form">Close</button>
+        </footer>
+
+
+</dialog>
+
+
 
 
 </body>
