@@ -1,5 +1,4 @@
 import {Task} from './tasks.js'
-import { sendToLocalStorage, retrieveFromLocalStorage } from '../index.js';
 import { storeTasksInTimeObject } from './schedule.js';
 
 export class Project{
@@ -17,17 +16,15 @@ export class Project{
         console.log(taskName);
         this.arrayOfTasks.push(taskName);  
         console.log(this.arrayOfTasks) 
-        storeTasksInTimeObject()
-        sendToLocalStorage()
-      
-        
+        /* storeTasksInTimeObject() */
     }
 
     deleteTask(task){
       let taskIndex = this.arrayOfTasks.findIndex(element=>element.taskIdentifier === task);
       this.arrayOfTasks.splice(taskIndex,1);
-      sendToLocalStorage();
+
 
     }
+    
 }
 

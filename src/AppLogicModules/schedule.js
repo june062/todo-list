@@ -1,5 +1,6 @@
 import { formatDistanceStrict, format, formatDistanceToNowStrict } from "date-fns";
-import {arrayOfProjects, sendToLocalStorage} from "../index.js"
+
+
 export {storeTasksInTimeObject, todaysSchedule, thisWeeksSchedule, thisMonthsSchedule}
 
 let removeTaskFromSchedule = function(obj)
@@ -7,7 +8,6 @@ let removeTaskFromSchedule = function(obj)
        return {removeTask: (nameOfTask) => {
             obj[nameOfTask].completed = "true";
             delete obj[nameOfTask];
-            sendToLocalStorage();
             }
         }
 
@@ -48,16 +48,16 @@ let storeTasks = function(arrayOfProjects){
             const thisWeekTrueOrFalse = days <= 7 && days != 1;
             const thisMonthTrueOrFalse = days > 7 && days <= 30;
             if(days == "1"){
-                todaysSchedule[arrayToLoop[j].taskName] = arrayToLoop[j];
-                thisWeeksSchedule[arrayToLoop[j].taskName] = arrayToLoop[j]
-                thisMonthsSchedule[arrayToLoop[j].taskName] = arrayToLoop[j];
+                todaysSchedule[`Task ${i}-${j}`] = arrayToLoop[j];
+                thisWeeksSchedule[`Task ${i}-${j}`] = arrayToLoop[j]
+                thisMonthsSchedule[`Task ${i}-${j}`] = arrayToLoop[j];
             }
             else if(thisWeekTrueOrFalse && arrayToLoop[j].completed != "true"){
-                thisWeeksSchedule[arrayToLoop[j].taskName] = arrayToLoop[j]
-                thisMonthsSchedule[arrayToLoop[j].taskName] = arrayToLoop[j];
+                thisWeeksSchedule[`Task ${i}-${j}`] = arrayToLoop[j]
+                thisMonthsSchedule[`Task ${i}-${j}`] = arrayToLoop[j];
             }
             else if(thisMonthTrueOrFalse && arrayToLoop[j].completed != "true"){
-                thisMonthsSchedule[arrayToLoop[j].taskName] = arrayToLoop[j];
+                thisMonthsSchedule[`Task ${i}-${j}`] = arrayToLoop[j];
             }
             console.log(days)
             
@@ -66,7 +66,7 @@ let storeTasks = function(arrayOfProjects){
 
     }
 }
-return{storeTasks}
+return{storeTasks, todaysSchedule,thisWeeksSchedule,thisMonthsSchedule}
 
 
 

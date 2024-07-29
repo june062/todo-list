@@ -1,6 +1,7 @@
 import {Project} from "../AppLogicModules/projects.js"
 import { projectRemovalAndAddition } from "../index.js";
 import { sidebarDiv, newProjectsContainer } from "../domlogic.js";
+import { subscriber } from "../observer.js";
 export {projectsDOM};
 
 let projectsDOM = (function (){
@@ -10,9 +11,9 @@ let projectsDOM = (function (){
         let projectTitleVal = projectTitle.value;
 
         let newProject = new Project(projectTitleVal);
-        newProject.createAndAddTask("thing", "anything", "07/30/2024", "eh", "false") 
+        subscriber.addProjectToArray(newProject);
+        subscriber.createAndAddTask("thing", "anything", "07/30/2024", "eh", "false", newProject) 
         
-        projectRemovalAndAddition.addProjectToArray(newProject);
 
         function displayNewProject(){
             let projectButton = document.createElement('button');
