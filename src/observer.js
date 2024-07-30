@@ -50,8 +50,10 @@ let Subscriber = function(){
    
     }
 
-    let createAndAddTask = function(taskName,description,dueDate,urgency, completed, obj){
-        obj.createAndAddTask(taskName,description,dueDate,urgency, completed);
+    let createTask = function(taskName,description,dueDate,urgency, completed, newProject){
+        console.log(Object.getPrototypeOf(newProject))
+        console.log(projectRemovalAndAddition.projects)
+        newProject.createAndAddTask(taskName,description,dueDate,urgency, completed);
         schedule();
         storage();
     }
@@ -65,7 +67,7 @@ let Subscriber = function(){
 
     }
 
-    return {addObserver,removeObserver,schedule,storage, addProjectToArray,removeProjectFromArray, createAndAddTask,removeTask, editTask}
+    return {addObserver,removeObserver,schedule,storage, addProjectToArray,removeProjectFromArray, createTask,removeTask, editTask}
 }
 
 let subscriber = new Subscriber()

@@ -5,14 +5,16 @@ import { subscriber } from "../observer.js";
 export {projectsDOM};
 
 let projectsDOM = (function (){
+    let newProject;
 
     function createProject(){
         let projectTitle = document.querySelector('#project-name');
         let projectTitleVal = projectTitle.value;
 
-        let newProject = new Project(projectTitleVal);
+        newProject = new Project(projectTitleVal);
+        console.log(Object.getPrototypeOf(newProject))
         subscriber.addProjectToArray(newProject);
-        subscriber.createAndAddTask("thing", "anything", "07/30/2024", "eh", "false", newProject) 
+        subscriber.createTask("thing", "anything", "07/30/2024", "eh", "false", newProject) ;
         
 
         function displayNewProject(){
@@ -38,12 +40,8 @@ let projectsDOM = (function (){
             newProjectsContainer.appendChild(projectButton)
             }
         }   
-    function displayAllTasks(){
-        
-    }
+ 
 
-    
-
-return {createProject, displayAllProjects}
+return {createProject, displayAllProjects,newProject}
 
 })()

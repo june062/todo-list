@@ -1,5 +1,6 @@
 export {generatePermanentDOM, todayButton,thisWeekButton,thisMonthButton,newProjectButton,titleHeader, sidebarDiv, newProjectsContainer, taskContainer, mainContainer}
 import {projectsDOM} from "./DOMLogicModules/projectsDOM.js"
+import {tasksDOM} from "./DOMLogicModules/tasksDOM.js"
 import { storageManager } from "./storage.js";
 import {displayContentsOfProject} from "./DOMLogicModules/tasksDOM"
 
@@ -70,7 +71,7 @@ let projectModal = document.querySelector("dialog.project-modal")
 let newProjectSubmit = document.querySelector("dialog .submit-form")
 let newProjectClose = document.querySelector("dialog .close-form");
 
-let newTaskButton = document.querySelector("button.new-task");
+
 let taskModal= document.querySelector("dialog.task-modal");
 let neweTaskSubmit = document.querySelector("dialog .task-submit-form");
 let newTaskClose = document.querySelector("dialog .task-close-form");
@@ -87,9 +88,23 @@ newProjectClose.addEventListener("click", ()=> {
     projectModal.close()
 })
 
- newProjectsContainer.addEventListener("click", 
-displayContentsOfProject)  
+ newProjectsContainer.addEventListener("click", (e)=>{
+    tasksDOM.displayContentsOfProject(e);
+ }
+)  
 
 
 
+mainContainer.addEventListener("click", (e)=>{
+    if (e.target === document.querySelector("button.add-task")){
+        taskModal.showModal();
+    }
 
+})
+newTaskClose.addEventListener("click", ()=>{
+    taskModal.close()}
+    )
+neweTaskSubmit.addEventListener("click", ()=>{
+    tasksDOM.displayNewTask();
+
+})

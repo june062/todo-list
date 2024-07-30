@@ -1,7 +1,6 @@
-import {projectsDOM} from "./projectsDOM.js";
+/* import {projectsDOM} from "./projectsDOM.js";
 import {tasksDOM} from "./tasksDOM.js"
-/* 
-let titleHeader = document.createElement("h1");
+
 let projectModal = document.querySelector("dialog.project-modal")
 let newProjectSubmit = document.querySelector("dialog .submit-form")
 let newProjectClose = document.querySelector("dialog .close-form");
@@ -46,4 +45,4 @@ newProjectClose.addEventListener("click", ()=> {
  newProjectsContainer.addEventListener("click", 
 displayContentsOfProject)  
 
- */
+  */

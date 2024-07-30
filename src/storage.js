@@ -15,6 +15,10 @@ let storageManager = (function(){
 
     function retrieveFromLocalStorage(){
         projectRemovalAndAddition.setProjects = JSON.parse(localStorage.getItem("arrayOfProjects"));
+        for(let proj of projectRemovalAndAddition.projects){
+          Object.setPrototypeOf(proj, Project.prototype)
+
+        }
         Object.assign(storeTasksInTimeObject.todaysSchedule, JSON.parse(localStorage.getItem("todaysSchedule")));
         Object.assign(storeTasksInTimeObject.thisWeeksSchedule,JSON.parse(localStorage.getItem("thisWeeksSchedule")));
         Object.assign(storeTasksInTimeObject.thisMonthsSchedule,JSON.parse(localStorage.getItem("thisMonthsSchedule"))); 
@@ -23,8 +27,8 @@ let storageManager = (function(){
 
 function createDefaultProject(){
     let defaultProject = new Project("Default Project");
-    projectRemovalAndAddition.addProjectToArray(defaultProject);
-    sendToLocalStorage();
+    projectRemovalAndAddition.projects.push(defaultProject);
+    sendToLocalStorage(projectRemovalAndAddition.projects);
 }
 
     
