@@ -72,7 +72,17 @@ body{
 }
 .task{
     border: solid black;
+    display:flex;
+    gap: 30px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: larger;
 }
+.task-description{
+    width: 40%;
+   
+};
+
 /* Project and project modal styles */
 
 dialog[open]{
