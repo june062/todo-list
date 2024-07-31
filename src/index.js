@@ -30,7 +30,6 @@ export {projectRemovalAndAddition}
  generatePermanentDOM()
 
 
-localStorage.clear()
 
 
 

@@ -48,7 +48,7 @@ let tasksDOM = (function(){
                     taskNameLabel.setAttribute("for", "task-name");
                     taskNameLabel.textContent = `Task Name`;
                 let taskNameInput = document.createElement("input");
-                    setAttributes(taskNameInput, {"type": "text","id":"task-name", "value": `${element.taskName}`});
+                    setAttributes(taskNameInput, {"type": "text","id":`task-name-${element.taskIdentifier}`, "value": `${element.taskName}`});
                 taskNameDiv.append(taskNameLabel,taskNameInput)
 
 
@@ -59,7 +59,7 @@ let tasksDOM = (function(){
                     taskDescriptionLabel.textContent = `Description`;
 
                 let taskDescriptionTextArea = document.createElement("textarea");
-                    setAttributes(taskDescriptionTextArea, {"id":"description"});
+                    setAttributes(taskDescriptionTextArea, {"id":`description-${element.taskIdentifier}`});
                     taskDescriptionTextArea.textContent = element.description;
                 taskDescriptionDiv.append(taskDescriptionLabel, taskDescriptionTextArea)
 
@@ -71,7 +71,7 @@ let tasksDOM = (function(){
                     taskDueDateLabel.setAttribute("for", "due-date");
                     taskDueDateLabel.textContent = `Due Date`;
                 let taskDueDateInput = document.createElement("input");
-                setAttributes(taskDueDateInput, {"type": "date","id":"due-date", "value": `${format(new Date(element.dueDate), "yyyy-MM-dd")}`});
+                setAttributes(taskDueDateInput, {"type": "date","id":`due-date-${element.taskIdentifier}`, "value": `${format(new Date(element.dueDate), "yyyy-MM-dd")}`});
                 taskDueDateDiv.append(taskDueDateLabel, taskDueDateInput)
 
 
@@ -82,7 +82,7 @@ let tasksDOM = (function(){
                     taskUrgencyLabel.setAttribute("for", "urgency");
                     taskUrgencyLabel.textContent = "Urgency"; 
                 let taskUrgencySelect = document.createElement("select");
-                    setAttributes(taskUrgencySelect, {"name": "urgency", "id": "urgency"});
+                    setAttributes(taskUrgencySelect, {"name": "urgency", "id": `urgency-${element.taskIdentifier}`});
 
                     
                     let lowOption = document.createElement("option");
@@ -109,7 +109,7 @@ let tasksDOM = (function(){
                     taskCompletedLabel.setAttribute("for", "completed");
                     taskCompletedLabel.textContent = "Completed"; 
                 let taskCompletedInput = document.createElement("input");
-                    setAttributes(taskCompletedInput, {"type": "checkbox","id":"completed"});
+                    setAttributes(taskCompletedInput, {"type": "checkbox","id":`completed-${element.taskIdentifier}`});
 
                     if(element.completed){
                         taskCompletedInput.checked = true;

@@ -49,19 +49,17 @@ let Subscriber = function(){
         storage();
     }
     let editTask = function(firstVal,secondVal,target){
-        console.log(target)
-    if(target){
-        console.log(projectRemovalAndAddition.projects[firstVal].arrayOfTasks)
+    
         let selectedTask = projectRemovalAndAddition.projects[firstVal].arrayOfTasks[secondVal];
-        /* selectedTask.taskName = document.querySelector("#task-name").value;
-        selectedTask.description = document.querySelector("#description").value; */
-        /* selectedTask.dueDate = document.querySelector("#due-date").value;
-        selectedTask.urgency = document.querySelector("#urgency")
-        selectedTask.completed = document.querySelector("#completed") */
-        
-        console.log(document.querySelector(".task-container #due-date"))
-        console.log(selectedTask)
-    }
+        selectedTask.taskName = document.querySelector(`#task-name-${secondVal}`).value;
+        selectedTask.description = document.querySelector(`#description-${secondVal}`).value;
+        selectedTask.dueDate = document.querySelector(`#due-date-${secondVal}`).value;
+        selectedTask.urgency = document.querySelector(`#urgency-${secondVal}`).value;
+        selectedTask.completed = document.querySelector(`#completed-${secondVal}`).checked
+
+        schedule();
+        storage();
+    
     
 
     }
