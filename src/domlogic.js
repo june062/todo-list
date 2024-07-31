@@ -55,9 +55,9 @@ function generatePermanentDOM(){
 
     body.append(sidebarDiv,titleContainer,mainContainer)
 
-    if (!JSON.parse(localStorage.getItem("arrayOfProjects"))){
-        storageManager.createDefaultProject();
-        storageManager.sendToLocalStorage();
+    if (/* !JSON.parse(localStorage.getItem("arrayOfProjects")) */ true){
+        subscriber.createDefaultProject();
+        projectsDOM.displayAllProjects();
     }
     
     else {
@@ -115,7 +115,8 @@ neweTaskSubmit.addEventListener("click", ()=>{
 taskContainer.addEventListener("click", (event)=>{
     
     if(event.target !== document.querySelectorAll("main-container > button")){
-        if(event.target instanceof HTMLInputElement|| event.target instanceof HTMLTextAreaElement|| event.target instanceof HTMLDivElement|| event.target instanceof HTMLFormElement || event.target instanceof HTMLSelectElement){
+        if(event.target instanceof HTMLInputElement|| event.target instanceof HTMLTextAreaElement|| event.target instanceof HTMLDivElement|| event.target instanceof HTMLFormElement || event.target instanceof HTMLSelectElement||
+            event.target instanceof HTMLLabelElement){
             return;
         }
     }

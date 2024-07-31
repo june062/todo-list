@@ -69,7 +69,6 @@ body{
     gap: 10px;
 }
 form{
-    border: solid black;
     display:flex;
     gap: 30px;
     justify-content: space-between;
@@ -130,5 +129,11 @@ dialog > main{
 textarea{
     resize: none;
     width: 100%;
+}
+
+form input, form textarea, form button, form select{
+    color: rgb(233, 243, 226);
+    text-align: center;
+    font-weight: 600;
 }
 

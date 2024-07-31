@@ -48,7 +48,7 @@ let Subscriber = function(){
         schedule();
         storage();
     }
-    let editTask = function(firstVal,secondVal,target){
+    let editTask = function(firstVal,secondVal){
     
         let selectedTask = projectRemovalAndAddition.projects[firstVal].arrayOfTasks[secondVal];
         selectedTask.taskName = document.querySelector(`#task-name-${secondVal}`).value;
@@ -69,8 +69,15 @@ let Subscriber = function(){
         storage();
 
     }
+    let createDefaultProject = function(){
+            let defaultProject = new Project("Default Project");
+            addProjectToArray(defaultProject)
+            
+            
+        
+    }
 
-    return {addObserver,removeObserver,schedule,storage, addProjectToArray,removeProjectFromArray, createTask,removeTask, editTask}
+    return {addObserver,removeObserver,schedule,storage, addProjectToArray,removeProjectFromArray, createTask,removeTask, editTask, createDefaultProject}
 }
 
 let subscriber = new Subscriber()

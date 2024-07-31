@@ -29,18 +29,14 @@ let storageManager = (function(){
         Task.taskIdentifier = localStorage.getItem("taskIdentifier");
     }
 
-function createDefaultProject(){
-    let defaultProject = new Project("Default Project");
-    projectRemovalAndAddition.projects.push(defaultProject);
-    sendToLocalStorage(projectRemovalAndAddition.projects);
-}
+
 
     
 
 
 
 
-    return {sendToLocalStorage,retrieveFromLocalStorage, createDefaultProject}
+    return {sendToLocalStorage,retrieveFromLocalStorage}
 })()
 
 
