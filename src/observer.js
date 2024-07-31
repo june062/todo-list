@@ -1,8 +1,3 @@
-
-
-/* This should manage the modules that need to know when arrayOfProjects has changed and executing them without having access to arrayOfProjects */
-
-
 import {projectRemovalAndAddition} from "./index.js";
 import {storeTasksInTimeObject} from "./AppLogicModules/schedule.js";
 import {storageManager} from "./storage.js";
@@ -29,8 +24,6 @@ let Subscriber = function(){
         storeTasksInTimeObject.storeTasks(projectRemovalAndAddition.projects)
     }
     let storage = function(){
-        /* When a project or task is added/removed to/from arrayOfProjects, call a function that tells the storage.js module to execute the sendToLocalStorage function, 
-        passing the projects getter as a parameter for the function */
         storageManager.sendToLocalStorage(projectRemovalAndAddition.projects)
     }
     let addProjectToArray = function(projectName){
@@ -51,13 +44,21 @@ let Subscriber = function(){
     }
 
     let createTask = function(taskName,description,dueDate,urgency, completed, newProject){
-        console.log(Object.getPrototypeOf(newProject))
-        console.log(projectRemovalAndAddition.projects)
         newProject.createAndAddTask(taskName,description,dueDate,urgency, completed);
         schedule();
         storage();
     }
-    let editTask = function(){
+    let editTask = function(e){
+    if(!e.target == document.querySelector(".main-container > button")){
+        let selectedTask = projectRemovalAndAddition.projects[e.target.dataset.projectid][e.target.dataset.taskid];
+        selectedTask.taskName = document.querySelector("#task-name").value;
+        selectedTask.description = document.querySelector("#description").value;
+        /* selectedTask.dueDate = document.querySelector("#due-date").value;
+        selectedTask.urgency = document.querySelector("#urgency")
+        selectedTask.completed = document.querySelector("#completed") */
+        console.log(document.querySelector("#due-date").value)
+    }
+    
 
     }
     let removeTask = function(task){

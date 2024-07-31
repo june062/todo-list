@@ -2,6 +2,7 @@ export {generatePermanentDOM, todayButton,thisWeekButton,thisMonthButton,newProj
 import {projectsDOM} from "./DOMLogicModules/projectsDOM.js"
 import {tasksDOM} from "./DOMLogicModules/tasksDOM.js"
 import { storageManager } from "./storage.js";
+import { subscriber } from "./observer.js";
 import {displayContentsOfProject} from "./DOMLogicModules/tasksDOM"
 
 
@@ -15,6 +16,7 @@ let sidebarDiv = document.createElement("div");
 let newProjectsContainer = document.createElement("div");
 let mainContainer = document.createElement("div");
 let taskContainer = document.createElement("div");
+
 
 
 
@@ -76,6 +78,7 @@ let taskModal= document.querySelector("dialog.task-modal");
 let neweTaskSubmit = document.querySelector("dialog .task-submit-form");
 let newTaskClose = document.querySelector("dialog .task-close-form");
 
+
 newProjectButton.addEventListener("click",()=> {
     projectModal.showModal()
 })
@@ -106,5 +109,10 @@ newTaskClose.addEventListener("click", ()=>{
     )
 neweTaskSubmit.addEventListener("click", ()=>{
     tasksDOM.displayNewTask();
+
+})
+
+taskContainer.addEventListener("click", (e)=>{
+    console.log("hi")
 
 })

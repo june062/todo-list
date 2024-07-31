@@ -2,7 +2,7 @@ export {tasksDOM}
 import {taskContainer, mainContainer} from "../domlogic.js"
 import {projectRemovalAndAddition} from "../index.js"
 import {subscriber} from "../observer.js"
-import {Project} from "../AppLogicModules/projects.js"
+import {format} from "date-fns";
 
 
 
@@ -21,7 +21,6 @@ let tasksDOM = (function(){
             }
 
             selectedProject = projectRemovalAndAddition.projects.find((element) => element.projectIdentifier == e.target.dataset.projectid);
-
             for (const element of selectedProject.arrayOfTasks){
                 
                 createTasksDOM(element);
@@ -39,6 +38,8 @@ let tasksDOM = (function(){
             
             let taskForm = document.createElement("form");
                 taskForm.setAttribute("method", "post");
+                taskForm.setAttribute("data-taskID", element.taskIdentifier)
+                taskForm.setAttribute("data-projectID", selectedProject.projectIdentifier)
 
         
 
@@ -46,9 +47,9 @@ let tasksDOM = (function(){
             taskNameDiv.classList.add("task-info");
                 let taskNameLabel = document.createElement("label");
                     taskNameLabel.setAttribute("for", "task-name");
-                    taskNameLabel.textContent = `Task Name: ${element.taskName}`;
+                    taskNameLabel.textContent = `Task Name`;
                 let taskNameInput = document.createElement("input");
-                    setAttributes(taskNameInput, {"type": "text","id":"task-name", "placeholder": `${element.taskName}`});
+                    setAttributes(taskNameInput, {"type": "text","id":"task-name", "value": `${element.taskName}`});
                 taskNameDiv.append(taskNameLabel,taskNameInput)
 
 
@@ -56,10 +57,11 @@ let tasksDOM = (function(){
             taskDescriptionDiv.classList.add("task-info")
                 let taskDescriptionLabel = document.createElement("label");
                     taskDescriptionLabel.setAttribute("for", "description");
-                    taskDescriptionLabel.textContent = `Description: ${element.description}`;
+                    taskDescriptionLabel.textContent = `Description`;
 
                 let taskDescriptionTextArea = document.createElement("textarea");
-                    setAttributes(taskDescriptionTextArea, {"id":"description", "placeholder": `${element.description}`});
+                    setAttributes(taskDescriptionTextArea, {"id":"description"});
+                    taskDescriptionTextArea.textContent = element.description;
                 taskDescriptionDiv.append(taskDescriptionLabel, taskDescriptionTextArea)
 
 
@@ -68,9 +70,9 @@ let tasksDOM = (function(){
             taskDueDateDiv.classList.add("task-info");
                 let taskDueDateLabel = document.createElement("label");
                     taskDueDateLabel.setAttribute("for", "due-date");
-                    taskDueDateLabel.textContent = `Due Date: ${element.dueDate}`;
+                    taskDueDateLabel.textContent = `Due Date`;
                 let taskDueDateInput = document.createElement("input");
-                setAttributes(taskDueDateInput, {"type": "date","id":"due-date", "value": `${element.dueDate}`});
+                setAttributes(taskDueDateInput, {"type": "date","id":"due-date", "value": `${format(new Date(element.dueDate), "yyyy-MM-dd")}`});
                 taskDueDateDiv.append(taskDueDateLabel, taskDueDateInput)
 
 
@@ -82,6 +84,8 @@ let tasksDOM = (function(){
                     taskUrgencyLabel.textContent = "Urgency"; 
                 let taskUrgencySelect = document.createElement("select");
                     setAttributes(taskUrgencySelect, {"name": "urgency", "id": "urgency"});
+
+                    
                     let lowOption = document.createElement("option");
                         lowOption.setAttribute("value", "low");
                         lowOption.textContent = "Low";
@@ -92,6 +96,9 @@ let tasksDOM = (function(){
                         highOption.setAttribute("value", "high");
                         highOption.textContent = "High"
                     taskUrgencySelect.append(lowOption,mediumOption,highOption);
+                    for (let i = 0; i < taskUrgencySelect.options.length; i++) {
+                        taskUrgencySelect.options[i].selected = taskUrgencySelect.options[i].value === element.urgency;
+                    }
 
                 taskUrgencyDiv.append(taskUrgencyLabel, taskUrgencySelect)
                     
@@ -103,7 +110,11 @@ let tasksDOM = (function(){
                     taskCompletedLabel.setAttribute("for", "completed");
                     taskCompletedLabel.textContent = "Completed"; 
                 let taskCompletedInput = document.createElement("input");
-                    setAttributes(taskCompletedInput, {"type": "checkbox","id":"completed", "placeholder": `${element.completed}`});
+                    setAttributes(taskCompletedInput, {"type": "checkbox","id":"completed"});
+
+                    if(element.completed){
+                        taskCompletedInput.checked = true;
+                    }
                     taskCompletedDiv.append(taskCompletedLabel, taskCompletedInput)
 
             let submitEdittedTask = document.createElement("button");
@@ -131,7 +142,8 @@ let tasksDOM = (function(){
             let descriptionVal = document.querySelector("#description").value;
             let dueDateVal = document.querySelector("#due-date").value;
             let urgencyVal = document.querySelector("#urgency").value;
-            let completedVal = document.querySelector("#completed").value;
+            let completedVal = document.querySelector("#completed").checked;
+            console.log(completedVal)
 
             subscriber.createTask(nameVal, descriptionVal, dueDateVal, urgencyVal, completedVal, selectedProject);
         

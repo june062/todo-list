@@ -1,4 +1,5 @@
 import {Project} from "./AppLogicModules/projects.js"
+import { Task } from "./AppLogicModules/tasks.js";
 import { storeTasksInTimeObject } from "./AppLogicModules/schedule.js";
 import { projectRemovalAndAddition } from "./index.js";
 export {storageManager}
@@ -11,6 +12,8 @@ let storageManager = (function(){
         localStorage.setItem("thisWeeksSchedule", JSON.stringify(storeTasksInTimeObject.thisWeeksSchedule))
         localStorage.setItem("thisMonthsSchedule", JSON.stringify(storeTasksInTimeObject.thisMonthsSchedule))
         localStorage.setItem("projectIdentifier", Project.projectIdentifier)
+        localStorage.setItem("taskIdentifier", Task.taskIdentifier)
+        
     };
 
     function retrieveFromLocalStorage(){
@@ -23,6 +26,7 @@ let storageManager = (function(){
         Object.assign(storeTasksInTimeObject.thisWeeksSchedule,JSON.parse(localStorage.getItem("thisWeeksSchedule")));
         Object.assign(storeTasksInTimeObject.thisMonthsSchedule,JSON.parse(localStorage.getItem("thisMonthsSchedule"))); 
         Project.projectIdentifier = localStorage.getItem("projectIdentifier");
+        Task.projectIdentifier = localStorage.getItem("taskIdentifier");
     }
 
 function createDefaultProject(){

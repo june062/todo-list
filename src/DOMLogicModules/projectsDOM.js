@@ -12,9 +12,7 @@ let projectsDOM = (function (){
         let projectTitleVal = projectTitle.value;
 
         newProject = new Project(projectTitleVal);
-        console.log(Object.getPrototypeOf(newProject))
         subscriber.addProjectToArray(newProject);
-        subscriber.createTask("thing", "anything", "07/30/2024", "eh", "false", newProject) ;
         
 
         function displayNewProject(){
