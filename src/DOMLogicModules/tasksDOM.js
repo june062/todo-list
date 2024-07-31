@@ -37,9 +37,8 @@ let tasksDOM = (function(){
                 
             
             let taskForm = document.createElement("form");
-                taskForm.setAttribute("method", "post");
-                taskForm.setAttribute("data-taskID", element.taskIdentifier)
-                taskForm.setAttribute("data-projectID", selectedProject.projectIdentifier)
+             /*    taskForm.setAttribute("method", "post"); */
+                
 
         
 
@@ -120,6 +119,8 @@ let tasksDOM = (function(){
             let submitEdittedTask = document.createElement("button");
             submitEdittedTask.classList.add("submit-editted-task");
             submitEdittedTask.textContent = "Submit edit";
+            submitEdittedTask.setAttribute("data-taskID", element.taskIdentifier)
+            submitEdittedTask.setAttribute("data-projectID", selectedProject.projectIdentifier)
 
 
            

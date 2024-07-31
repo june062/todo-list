@@ -112,7 +112,8 @@ neweTaskSubmit.addEventListener("click", ()=>{
 
 })
 
-taskContainer.addEventListener("click", (e)=>{
-    console.log("hi")
+taskContainer.addEventListener("click", (event)=>{
+    event.preventDefault();
+    subscriber.editTask(+event.target.dataset.projectid, +event.target.dataset.taskid, event.target !== document.querySelectorAll("main-container > button"));
 
 })

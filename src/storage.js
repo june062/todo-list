@@ -26,7 +26,7 @@ let storageManager = (function(){
         Object.assign(storeTasksInTimeObject.thisWeeksSchedule,JSON.parse(localStorage.getItem("thisWeeksSchedule")));
         Object.assign(storeTasksInTimeObject.thisMonthsSchedule,JSON.parse(localStorage.getItem("thisMonthsSchedule"))); 
         Project.projectIdentifier = localStorage.getItem("projectIdentifier");
-        Task.projectIdentifier = localStorage.getItem("taskIdentifier");
+        Task.taskIdentifier = localStorage.getItem("taskIdentifier");
     }
 
 function createDefaultProject(){
