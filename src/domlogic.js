@@ -55,7 +55,7 @@ function generatePermanentDOM(){
 
     body.append(sidebarDiv,titleContainer,mainContainer)
 
-    if (/* !JSON.parse(localStorage.getItem("arrayOfProjects")) */ true){
+    if (!JSON.parse(localStorage.getItem("arrayOfProjects")) ){
         subscriber.createDefaultProject();
         projectsDOM.displayAllProjects();
     }
@@ -114,7 +114,7 @@ neweTaskSubmit.addEventListener("click", ()=>{
 
 taskContainer.addEventListener("click", (event)=>{
     
-    if(event.target !== document.querySelectorAll("main-container > button")){
+    if(event.target !== document.querySelectorAll("main-container > button.add-task")){
         if(event.target instanceof HTMLInputElement|| event.target instanceof HTMLTextAreaElement|| event.target instanceof HTMLDivElement|| event.target instanceof HTMLFormElement || event.target instanceof HTMLSelectElement||
             event.target instanceof HTMLLabelElement){
             return;
@@ -124,4 +124,11 @@ taskContainer.addEventListener("click", (event)=>{
     event.preventDefault();
     subscriber.editTask(+event.target.dataset.projectid, +event.target.dataset.taskid);
 
+})
+
+
+mainContainer.addEventListener("click", (e)=>{
+    if (e.target === document.querySelector("button.delete-project")){
+    projectsDOM.deleteProject()
+    }
 })

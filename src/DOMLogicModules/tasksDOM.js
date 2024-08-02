@@ -17,7 +17,11 @@ let tasksDOM = (function(){
                 let addTask = document.createElement('button');
                     addTask.classList.add("add-task");
                     addTask.textContent = "Add a task"
-                mainContainer.appendChild(addTask);
+                let deleteProject = document.createElement('button');
+                    deleteProject.classList.add("delete-project");
+                    deleteProject.textContent = "Delete project"
+
+                mainContainer.append(addTask, deleteProject);
             }
 
             selectedProject = projectRemovalAndAddition.projects.find((element) => element.projectIdentifier == e.target.dataset.projectid);
@@ -162,5 +166,8 @@ let tasksDOM = (function(){
             }
 
         }
-return {removeAllTaskDOM,displayContentsOfProject,displayNewTask, selectedProject}
+        function returnSelectedProject(){
+            return selectedProject
+        }
+return {removeAllTaskDOM,displayContentsOfProject,displayNewTask, returnSelectedProject}
 })()

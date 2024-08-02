@@ -136,4 +136,7 @@ form input, form textarea, form button, form select{
     text-align: center;
     font-weight: 600;
 }
+.delete-project{
+    display: inline;
+}
 

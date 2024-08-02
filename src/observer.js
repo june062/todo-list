@@ -64,7 +64,7 @@ let Subscriber = function(){
 
     }
     let removeTask = function(task){
-        Project.prototype.deleteTask(task);
+        
         schedule();
         storage();
 
@@ -76,7 +76,7 @@ let Subscriber = function(){
             
         
     }
-
+    
     return {addObserver,removeObserver,schedule,storage, addProjectToArray,removeProjectFromArray, createTask,removeTask, editTask, createDefaultProject}
 }
 
