@@ -21,6 +21,7 @@
         
                 <button class="close-form">Close</button>
             </footer>
+
   
 </dialog>
 
@@ -31,20 +32,32 @@
 
     <main>
         <div><label for="task-name">Task Name</label><input id= "task-name"type="text" required></div>
-        <div><label for="task-description">Task Description</label><input id= "task-description"type="text" required></div>
-        <div><label for="task-due-date">Task Due Date</label><input id= "task-due-date"type="date" required></div>
-        <div><label for="task-urgency">Task Urgency</label><input id= "task-urgency"type="dropdown" required></div>
-        <div><label for="task-completed">Task Completed</label><input id= "task-completed"type="text" required></div>
+        <div><label for="description">Description</label><input id= "description"type="text" required></div>
+        <div><label for="due-date">Due Date</label><input id= "due-date"type="date" required></div>
+
+        <div>
+            <label for="urgency">Urgency</label>
+            <select name="urgency" id="urgency">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+        </div>
+        <div><label for="completed">Completed</label><input id= "completed"type="checkbox" required></div>
+
     </main>
 
   
         <footer>
-            <button class="submit-form">Add</button>
+            <button class="task-submit-form">Add</button>
     
-            <button class="close-form">Close</button>
+            <button class="task-close-form">Close</button>
         </footer>
 
+
 </dialog>
+
+
 
 
 </body>
