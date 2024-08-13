@@ -48,9 +48,16 @@ let Subscriber = function(){
         schedule();
         storage();
     }
-    let editTask = function(firstVal,secondVal){
+    let editTask = function(firstVal,secondVal, target){
+        let projIndex = projectRemovalAndAddition.projects.findIndex((element)=>
+            firstVal === element.projectIdentifier)
+            
+        let taskIndex = projectRemovalAndAddition.projects[projIndex].arrayOfTasks.findIndex((element)=>
+            secondVal === element.taskIdentifier)
+        
     
-        let selectedTask = projectRemovalAndAddition.projects[firstVal].arrayOfTasks[secondVal];
+        let selectedTask = projectRemovalAndAddition.projects[projIndex].arrayOfTasks[taskIndex];
+
         selectedTask.taskName = document.querySelector(`#task-name-${secondVal}`).value;
         selectedTask.description = document.querySelector(`#description-${secondVal}`).value;
         selectedTask.dueDate = document.querySelector(`#due-date-${secondVal}`).value;

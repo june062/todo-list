@@ -1,6 +1,6 @@
 import {Project} from "../AppLogicModules/projects.js"
 import { projectRemovalAndAddition } from "../index.js";
-import { sidebarDiv, newProjectsContainer, mainContainer } from "../domlogic.js";
+import { sidebarDiv, newProjectsContainer, mainContainer, taskContainer } from "../domlogic.js";
 import { subscriber } from "../observer.js";
 import { tasksDOM } from "./tasksDOM.js";
 export {projectsDOM};
@@ -49,8 +49,8 @@ let projectsDOM = (function (){
             element.projectIdentifier === tasksDOM.returnSelectedProject().projectIdentifier;
         }), 1);
         displayAllProjects();
-        while(mainContainer.firstChild){
-            mainContainer.removeChild(mainContainer.firstChild)
+        while(mainContainer.lastChild !==taskContainer){
+            mainContainer.removeChild(mainContainer.lastChild)
         }
 
         subscriber.storage();

@@ -114,13 +114,12 @@ neweTaskSubmit.addEventListener("click", ()=>{
 
 taskContainer.addEventListener("click", (event)=>{
     
-    if(event.target !== document.querySelectorAll("main-container > button.add-task")){
+    if(event.target != document.querySelectorAll("main-container > button.add-task")){
         if(event.target instanceof HTMLInputElement|| event.target instanceof HTMLTextAreaElement|| event.target instanceof HTMLDivElement|| event.target instanceof HTMLFormElement || event.target instanceof HTMLSelectElement||
             event.target instanceof HTMLLabelElement){
             return;
         }
     }
-    console.log(event.target)
     event.preventDefault();
     subscriber.editTask(+event.target.dataset.projectid, +event.target.dataset.taskid);
 

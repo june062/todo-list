@@ -125,8 +125,6 @@ let tasksDOM = (function(){
             submitEdittedTask.textContent = "Submit edit";
             submitEdittedTask.setAttribute("data-taskID", element.taskIdentifier)
             submitEdittedTask.setAttribute("data-projectID", selectedProject.projectIdentifier)
-
-
            
                 taskDescriptionDiv.classList.add("task-description")
         

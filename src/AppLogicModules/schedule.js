@@ -59,7 +59,7 @@ let storeTasks = function(arrayOfProjects){
             else if(thisMonthTrueOrFalse && arrayToLoop[j].completed != "true"){
                 thisMonthsSchedule[`Task ${i}-${j}`] = arrayToLoop[j];
             }
-            console.log(days)
+
             
     }
   
